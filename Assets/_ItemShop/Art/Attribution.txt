@@ -15,3 +15,6 @@ https://opengameart.org/content/lpc-clothing-updates
 LPC Character Generator
 https://sanderfrenken.github.io/Universal-LPC-Spritesheet-Character-Generator
 
+Golden UI - Bigger
+https://opengameart.org/content/golden-ui-bigger-than-ever-edition
+

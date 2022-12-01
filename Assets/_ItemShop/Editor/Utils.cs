@@ -12,7 +12,7 @@ namespace ItemShopEditor
     {
 
         #region Create Menu
-        const string MENU_ID = "Assets/Create/ItemShop/CharacterAnimation";
+        const string MENU_ID = "Assets/Create/ItemShop/SpriteAnimation";
         static Object[] SelectedAssetObjects()
         {
             var path = AssetDatabase.GetAssetPath(Selection.activeObject);
@@ -80,7 +80,7 @@ namespace ItemShopEditor
 
         void CreateAnimation(int from, int to, int index)
         {
-            var newAnim = CreateInstance<CharacterAnimation>();
+            var newAnim = CreateInstance<SpriteAnimation>();
 
             newAnim.Keys.AddRange(sprites[from..to]);
             newAnim.Delay = .2f;

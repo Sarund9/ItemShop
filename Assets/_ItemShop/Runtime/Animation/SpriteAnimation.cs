@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace ItemShop
 {
-    //[CreateAssetMenu(menuName = "")]
-    public class CharacterAnimation : ScriptableObject
+    [CreateAssetMenu(menuName = "ItemShop/Empty Sprite Animation")]
+    public class SpriteAnimation : ScriptableObject
     {
         [field: SerializeField]
         public List<Sprite> Keys { get; private set; } = new();

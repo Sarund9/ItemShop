@@ -416,7 +416,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.021816134}
+  m_Offset: {x: 0, y: -0.051540375}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -427,7 +427,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.47287372, y: 0.7042687}
+  m_Size: {x: 0.3822856, y: 0.6448202}
   m_EdgeRadius: 0
 --- !u!1 &1188213460
 GameObject:
@@ -538,7 +538,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 0.446236}
+  m_Size: {x: 1.4680157, y: 0.446236}
   m_EdgeRadius: 0
 --- !u!1 &1226148712
 GameObject:
@@ -734,6 +734,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1592008949}
   - component: {fileID: 1592008950}
+  - component: {fileID: 1592008951}
   m_Layer: 0
   m_Name: BaseSprite
   m_TagString: Untagged
@@ -808,6 +809,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1592008951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592008948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e42086226870264ca1c48a4dd0ec4ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anims:
+  - anim: {fileID: 11400000, guid: 4f5e59b7c63ec374db07cc6d4c69377b, type: 2}
+    name: down
+  - anim: {fileID: 11400000, guid: bd00ae8b1978a9a4b85c13f8841e30c6, type: 2}
+    name: up
+  - anim: {fileID: 11400000, guid: c77416418f4e36b4aa006cee8596d910, type: 2}
+    name: left
+  - anim: {fileID: 11400000, guid: c3925e0975ef1cf41a238b4828d3458e, type: 2}
+    name: right
+  spriteRenderer: {fileID: 1592008950}
+  overlays: []
+  <SpeedMult>k__BackingField: 1
 --- !u!1 &1642784437
 GameObject:
   m_ObjectHideFlags: 0
@@ -819,7 +844,6 @@ GameObject:
   - component: {fileID: 1642784438}
   - component: {fileID: 1642784439}
   - component: {fileID: 1642784443}
-  - component: {fileID: 1642784440}
   - component: {fileID: 1642784441}
   - component: {fileID: 1642784442}
   m_Layer: 0
@@ -837,7 +861,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1642784437}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.236, y: 0.832, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -859,32 +883,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c70fef55f929c15429a343ab28794875, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterAnimator: {fileID: 1642784440}
-  moveSpeed: 1
+  moveSpeed: 1.1
   rb: {fileID: 1642784441}
---- !u!114 &1642784440
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1642784437}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e42086226870264ca1c48a4dd0ec4ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anims:
-  - anim: {fileID: 11400000, guid: 4f5e59b7c63ec374db07cc6d4c69377b, type: 2}
-    name: down
-  - anim: {fileID: 11400000, guid: bd00ae8b1978a9a4b85c13f8841e30c6, type: 2}
-    name: up
-  - anim: {fileID: 11400000, guid: c77416418f4e36b4aa006cee8596d910, type: 2}
-    name: left
-  - anim: {fileID: 11400000, guid: c3925e0975ef1cf41a238b4828d3458e, type: 2}
-    name: right
-  spriteRenderer: {fileID: 1592008950}
-  <SpeedMult>k__BackingField: 1
 --- !u!50 &1642784441
 Rigidbody2D:
   serializedVersion: 4
@@ -919,7 +919,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.23241124}
+  m_Offset: {x: 0, y: -0.30083534}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -930,7 +930,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.4519239, y: 0.49355167}
+  m_Size: {x: 0.3217667, y: 0.33657438}
   m_EdgeRadius: 0
 --- !u!114 &1642784443
 MonoBehaviour:
@@ -945,5 +945,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1642784441}
-  animator: {fileID: 1642784440}
-  animationVelocityMult: 1.2
+  animators:
+  - {fileID: 1592008951}
+  animationVelocityMult: 1.1

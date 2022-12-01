@@ -9,9 +9,6 @@ namespace ItemShop
     {
 
 
-        [SerializeField]
-        CharacterAnimator characterAnimator;
-
         [SerializeField, Range(1, 20f)]
         float moveSpeed = 5f;
 

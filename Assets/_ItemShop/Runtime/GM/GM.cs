@@ -14,6 +14,12 @@ namespace ItemShop
         [SerializeField]
         SceneRef menu;
 
+        [Header("Managers")]
+        [SerializeField]
+        InputManager input;
+
+        public static InputManager Input => I.input;
+
         private void Awake()
         {
             if (I)

@@ -967,3 +967,8 @@ MonoBehaviour:
     down: {fileID: 11400000, guid: 647e5ec90b7743a419ccb4cb2e3c2ab5, type: 2}
     left: {fileID: 11400000, guid: e5f309e15d1444941b9fa6fb2f1a5d91, type: 2}
     right: {fileID: 11400000, guid: 503e2dc10ffbd9f40837915ef025e879, type: 2}
+  - render: {fileID: 1226148714}
+    up: {fileID: 11400000, guid: e780d34f25cb730449755a706b9d74ec, type: 2}
+    down: {fileID: 11400000, guid: 647e5ec90b7743a419ccb4cb2e3c2ab5, type: 2}
+    left: {fileID: 11400000, guid: e5f309e15d1444941b9fa6fb2f1a5d91, type: 2}
+    right: {fileID: 11400000, guid: 503e2dc10ffbd9f40837915ef025e879, type: 2}

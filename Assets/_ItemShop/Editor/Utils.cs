@@ -5,6 +5,8 @@ using UnityEditor;
 using ItemShop;
 using System.Linq;
 using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 
 namespace ItemShopEditor
 {
@@ -20,17 +22,71 @@ namespace ItemShopEditor
             return AssetDatabase.LoadAllAssetsAtPath(path);
         }
 
+        static readonly Regex find_index = new(@"_\d+$");
+
         [MenuItem(MENU_ID, priority = 0)]
         static void CreateCharacterAnimation()
         {
-            var objs = SelectedAssetObjects()
+            var sprites = SelectedAssetObjects()
                 .Where(o => o is Sprite)
                 .Cast<Sprite>()
+                // Perform match, store result as Tuple
+                .Select(o => (sprite: o, match: find_index.Match(o.name)))
+                // Filter for invalids
+                .Where(t => t.match != null)
+                // Order
+                .OrderBy(s => {
+                    var n = s.match.Value[1..];
+                    
+                    return int.Parse(n);
+                })
+                .Select(t => t.sprite)
                 .ToArray();
+
+            /*
+            Sorting is required because unity will not give the sprites in Numbered or Imported order
+            Sorting by name will produce wrong results due to digid diferences (eg _24 will be before _6)
+
+             */
+
 
             var path = AssetDatabase.GetAssetPath(Selection.activeObject);
 
-            CharacterAnimationCreateWindow.OpenFrom(objs, path);
+            var name = Path.GetFileNameWithoutExtension(path);
+
+
+            //var sb = new StringBuilder("SPRITES:\n");
+            //foreach (var sprite in sprites)
+            //{
+            //    sb.AppendLine(sprite.name);
+            //}
+            //Debug.Log(sb.ToString());
+            //return;
+
+            if (sprites.Length != 36)
+                return;
+
+            path = Path.GetDirectoryName(path) + "/Animations/";
+
+            CreateAnimation(sprites[0..8], $"{path}{name}_up.asset");
+            CreateAnimation(sprites[9..17], $"{path}{name}_left.asset");
+            CreateAnimation(sprites[18..26], $"{path}{name}_down.asset");
+            CreateAnimation(sprites[27..35], $"{path}{name}_right.asset");
+
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+
+            static void CreateAnimation(Sprite[] sprites, string path)
+            {
+                var newAnim = ScriptableObject.CreateInstance<SpriteAnimation>();
+
+                //Debug.Log($"Create asset: {path}");
+
+                newAnim.Keys.AddRange(sprites);
+                newAnim.Delay = .2f;
+
+                AssetDatabase.CreateAsset(newAnim, path);
+            }
         }
         [MenuItem(MENU_ID, validate = true)]
         static bool CreateCharacterAnimation_Validate() =>

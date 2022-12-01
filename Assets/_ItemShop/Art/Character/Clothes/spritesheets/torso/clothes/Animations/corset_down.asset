@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 707293ddf5dc2a945af63351cb21b6b8, type: 3}
+  m_Name: corset_down
+  m_EditorClassIdentifier: 
+  <Keys>k__BackingField:
+  - {fileID: -1327045309, guid: 30fc7c74d7a6507429f92c74096a84a4, type: 3}
+  - {fileID: -797139201, guid: 30fc7c74d7a6507429f92c74096a84a4, type: 3}
+  - {fileID: 1976975409, guid: 30fc7c74d7a6507429f92c74096a84a4, type: 3}
+  - {fileID: 1635960641, guid: 30fc7c74d7a6507429f92c74096a84a4, type: 3}
+  - {fileID: 670960171, guid: 30fc7c74d7a6507429f92c74096a84a4, type: 3}
+  - {fileID: 1839848401, guid: 30fc7c74d7a6507429f92c74096a84a4, type: 3}
+  - {fileID: 1649318928, guid: 30fc7c74d7a6507429f92c74096a84a4, type: 3}
+  - {fileID: 812334340, guid: 30fc7c74d7a6507429f92c74096a84a4, type: 3}
+  <Delay>k__BackingField: 0.2

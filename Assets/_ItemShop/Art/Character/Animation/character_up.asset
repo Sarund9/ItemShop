@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 707293ddf5dc2a945af63351cb21b6b8, type: 3}
+  m_Name: character_up
+  m_EditorClassIdentifier: 
+  <Keys>k__BackingField:
+  - {fileID: 401472350, guid: 60d303fd4389b9847aaa494eedcc81f8, type: 3}
+  - {fileID: 2104675095, guid: 60d303fd4389b9847aaa494eedcc81f8, type: 3}
+  - {fileID: -1879436399, guid: 60d303fd4389b9847aaa494eedcc81f8, type: 3}
+  - {fileID: 104500471, guid: 60d303fd4389b9847aaa494eedcc81f8, type: 3}
+  - {fileID: 1012745167, guid: 60d303fd4389b9847aaa494eedcc81f8, type: 3}
+  - {fileID: -697054817, guid: 60d303fd4389b9847aaa494eedcc81f8, type: 3}
+  - {fileID: -1610613049, guid: 60d303fd4389b9847aaa494eedcc81f8, type: 3}
+  - {fileID: -1457248895, guid: 60d303fd4389b9847aaa494eedcc81f8, type: 3}
+  - {fileID: 2117334241, guid: 60d303fd4389b9847aaa494eedcc81f8, type: 3}
+  <Delay>k__BackingField: 0.1

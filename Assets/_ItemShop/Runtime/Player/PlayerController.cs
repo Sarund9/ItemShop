@@ -9,11 +9,15 @@ namespace ItemShop
     {
 
 
-        [SerializeField, Range(.1f, 10f)]
-        float moveSpeed = 2f;
+        [SerializeField]
+        CharacterAnimator characterAnimator;
 
-        Vector2 moveInput;
-        
+        [SerializeField, Range(1, 20f)]
+        float moveSpeed = 5f;
+
+        [SerializeField]
+        Rigidbody2D rb;
+
         public void OnInteract(InputAction.CallbackContext context)
         {
             
@@ -21,19 +25,12 @@ namespace ItemShop
 
         public void OnMovement(InputAction.CallbackContext context)
         {
-            moveInput = context.ReadValue<Vector2>();
+            rb.velocity = context.ReadValue<Vector2>() * moveSpeed;
         }
 
         public void Start()
         {
             GM.Input.SubscribePlayer(this);
-        }
-
-        public void Update()
-        {
-            transform.position += moveSpeed * Time.deltaTime * new Vector3(moveInput.x, moveInput.y, 0);
-
-
         }
 
 

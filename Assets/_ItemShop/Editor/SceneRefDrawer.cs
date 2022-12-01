@@ -36,7 +36,7 @@ namespace ItemShopEditor
 
             var newValue = EditorGUI
                 .ObjectField(position,
-                    new GUIContent(sceneName, scenePathProperty.stringValue),
+                    new GUIContent(label.text, scenePathProperty.stringValue),
                     asset, typeof(SceneAsset), false
                 ) as SceneAsset;
 

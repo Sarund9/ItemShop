@@ -27,7 +27,7 @@ namespace ItemShop
             }
         }
 
-        void Process(SpriteAnimator animator)
+        private void Process(SpriteAnimator animator)
         {
             var vel = rb.velocity;
             animator.Pause = vel.magnitude < .01f;

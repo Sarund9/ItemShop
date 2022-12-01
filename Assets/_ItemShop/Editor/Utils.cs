@@ -12,7 +12,7 @@ namespace ItemShopEditor
     {
 
         #region Create Menu
-        const string MENU_ID = "Assets/Create/ItemShop/SpriteAnimation";
+        const string MENU_ID = "Assets/Create/ItemShop/Sequenced Sprite Animations";
         static Object[] SelectedAssetObjects()
         {
             var path = AssetDatabase.GetAssetPath(Selection.activeObject);

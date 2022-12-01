@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 707293ddf5dc2a945af63351cb21b6b8, type: 3}
+  m_Name: pants_up
+  m_EditorClassIdentifier: 
+  <Keys>k__BackingField:
+  - {fileID: -1690229821, guid: 4744f611ae5fd334b9e543eef833d801, type: 3}
+  - {fileID: 432952812, guid: 4744f611ae5fd334b9e543eef833d801, type: 3}
+  - {fileID: 2037275574, guid: 4744f611ae5fd334b9e543eef833d801, type: 3}
+  - {fileID: -1805419350, guid: 4744f611ae5fd334b9e543eef833d801, type: 3}
+  - {fileID: -1754339100, guid: 4744f611ae5fd334b9e543eef833d801, type: 3}
+  - {fileID: -2122406586, guid: 4744f611ae5fd334b9e543eef833d801, type: 3}
+  - {fileID: -1283829608, guid: 4744f611ae5fd334b9e543eef833d801, type: 3}
+  - {fileID: 1209747522, guid: 4744f611ae5fd334b9e543eef833d801, type: 3}
+  - {fileID: 1371707780, guid: 4744f611ae5fd334b9e543eef833d801, type: 3}
+  <Delay>k__BackingField: 0.2

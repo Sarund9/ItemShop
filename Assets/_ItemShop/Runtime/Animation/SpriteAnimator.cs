@@ -12,19 +12,40 @@ namespace ItemShop
         [Serializable]
         struct Item
         {
-            public SpriteAnimation anim;
             public string name;
+            public SpriteAnimation anim;
         }
 
-        //class AnimationSet
-        //{
-        //    public AnimationSet(CharacterAnimation anim)
-        //    {
-        //        Main = anim;
-        //    }
-        //    public CharacterAnimation Main { get; set; }
-        //    public List<CharacterAnimation> Overlays { get; } = new();
-        //}
+        class AnimationSet
+        {
+            List<(SpriteAnimation anim, SpriteRenderer render)> overlays = new();
+
+            public AnimationSet(SpriteAnimation anim)
+            {
+                Main = anim;
+            }
+            public SpriteAnimation Main { get; set; }
+            
+            public int OverlayCount => overlays.Count;
+
+            public void AddOverlay(SpriteAnimation anim, SpriteRenderer render)
+            {
+                overlays.Add((anim, render));
+            }
+            public void RemoveOverlay(int index)
+            {
+                overlays.RemoveAt(index);
+            }
+
+            public void SetOverlaySprite(int o, int index)
+            {
+                if (o >= overlays.Count || index >= overlays[o].anim.Keys.Count)
+                    return;
+
+                overlays[o].render.sprite = overlays[o].anim.Keys[index];
+            }
+
+        }
 
         [SerializeField]
         List<Item> anims = new();
@@ -32,12 +53,12 @@ namespace ItemShop
         [SerializeField]
         SpriteRenderer spriteRenderer;
 
-        [SerializeField]
-        List<SpriteRenderer> overlays = new();
+        //[SerializeField]
+        //List<SpriteRenderer> overlays = new();
 
-        Dictionary<string, SpriteAnimation> animations;
+        Dictionary<string, AnimationSet> animations;
 
-        SpriteAnimation current;
+        AnimationSet current;
         int currentIndex;
 
         //float Duration => current.Keys.Count / current.FramesPerSecond;
@@ -59,16 +80,35 @@ namespace ItemShop
             }
         }
 
-        public void SetAnimation(string name, SpriteAnimation anim)
+        /// <summary>
+        /// Create an Overlay, an extra animation to play in another Sprite Renderer
+        /// </summary>
+        /// <param name="name"> Name of the Animation </param>
+        /// <param name="anim"> Animation to Play </param>
+        /// <param name="target"> SpriteRenderer to play it on </param>
+        public void CreateOverlay(string name, SpriteAnimation anim, SpriteRenderer target)
         {
-            animations[name] = anim;
-        }
-        public bool RemoveAnimation(string name) =>
-            animations.Remove(name);
+            if (!animations.ContainsKey(name))
+                return;
 
+            animations[name].AddOverlay(anim, target);
+        }
+        
         private void SetSprites(int index)
         {
-            spriteRenderer.sprite = current.Keys[index];
+            spriteRenderer.sprite = current.Main.Keys[index];
+
+            for (int i = 0; i < current.OverlayCount; i++)
+            {
+                //if (overlays.Count >= i)
+                //    break;
+                //if (index > current.Overlays[i].anim.Keys.Count)
+                //    continue;
+
+                current.SetOverlaySprite(i, index);
+
+                //overlays[i].sprite = current.Overlays[i].Keys[index];
+            }
         }
 
         #region Unity
@@ -78,7 +118,7 @@ namespace ItemShop
             animations = new(anims.Count);
             foreach (var item in anims)
             {
-                animations.Add(item.name, item.anim);
+                animations.Add(item.name, new AnimationSet(item.anim));
             }
 
             if (anims.Count > 0)
@@ -99,10 +139,10 @@ namespace ItemShop
                     yield return new WaitUntil(() => !Pause);
                 }
 
-                yield return new WaitForSeconds(current.Delay / SpeedMult);
+                yield return new WaitForSeconds(current.Main.Delay / SpeedMult);
 
                 currentIndex++;
-                if (currentIndex >= current.Keys.Count)
+                if (currentIndex >= current.Main.Keys.Count)
                     currentIndex = 0;
 
                 SetSprites(currentIndex);

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace ItemShop
 {
-    public class PlayerClicker : MonoBehaviour, IContainer
+    public class PlayerEquipment : MonoBehaviour, IContainer
     {
 
         [SerializeField]
@@ -54,6 +54,8 @@ namespace ItemShop
         {
             var d = PlayerInventory.Instance;
             
+            // TODO: Check that the Item can 
+
             d.ItemSwapped(this, slot);
         }
     }

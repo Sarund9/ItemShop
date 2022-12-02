@@ -7,7 +7,7 @@ namespace ItemShop
 {
     public class PlayerController : MonoBehaviour, PlayerInput.ICharacterActions
     {
-
+        public static PlayerController Instance { get; private set; }
 
         [SerializeField, Range(1, 20f)]
         float moveSpeed = 5f;
@@ -24,6 +24,11 @@ namespace ItemShop
         public void OnMovement(InputAction.CallbackContext context)
         {
             rb.velocity = context.ReadValue<Vector2>() * moveSpeed;
+        }
+
+        void Awake()
+        {
+            Instance = this;
         }
 
         public void Start()

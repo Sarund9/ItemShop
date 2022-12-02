@@ -22,14 +22,16 @@ namespace ItemShop
 
         public Item this[int slot] => inventory[slot];
 
+        public bool IsShop => true;
+
         public bool TrySet(int slot, Item item)
         {
             // Do not allow overriding of Slot Items
             if (slot < selection.Count && selection[slot] != null)
                 return false;
 
-            OnItemChanged?.Invoke(slot);
             inventory[slot] = item;
+            OnItemChanged?.Invoke(slot);
             return true;
         }
 
@@ -53,8 +55,9 @@ namespace ItemShop
         {
             for (int i = 0; i < selection.Count; i++)
             {
-                //OnItemChanged?.Invoke(i);
+                OnItemChanged?.Invoke(i);
             }
         }
+
     }
 }

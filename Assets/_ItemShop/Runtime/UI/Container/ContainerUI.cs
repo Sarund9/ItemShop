@@ -50,11 +50,21 @@ namespace ItemShop
             }
         }
 
-        private void OnButtonPressed(int slot)
+        private void ButtonPressed(int slot)
         {
             var inv = PlayerInventory.Instance;
 
-            inv.SwapItem(container.Value, slot);
+            var con = container.Value;
+            if (con.IsShop)
+            {
+                inv.DoTransaction(con, slot);
+            }
+            else
+                inv.SwapItem(con, slot);
+        }
+        private void ItemChanged(int index)
+        {
+            slots[index].SetItem(container.Value[index]);
         }
 
         private void Awake()
@@ -148,16 +158,12 @@ namespace ItemShop
                 }
                 #endregion
 
-                slots[i].SetCallback(OnButtonPressed);
+                slots[i].SetCallback(ButtonPressed);
                 slots[i].Initialize(sprite, pressed, i);
             }
 
             gameObject.SetActive(false);
         }
 
-        private void ItemChanged(int index)
-        {
-            slots[index].SetItem(container.Value[index]);
-        }
     }
 }

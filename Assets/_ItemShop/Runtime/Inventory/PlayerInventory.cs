@@ -75,41 +75,50 @@ namespace ItemShop
             }
         }
 
-        // Attempt to move item from Shop Container to Hand
-        public bool TryBuy(IContainer buyfrom, int buyslot)
+        public void DoTransaction(IContainer con, int slot)
         {
             if (InHand)
-                return false;
+            {
+                // Sell: Attempt by placing item in Shop Container from Hand
+                var prev = con[slot];
+                // If exchanging item, check that difference is valid
+                if (prev && prev.Price - InHand.Price < Money)
+                    return;
+                
+                // Shops will not allow selling at a 'selection' slot
+                if (!con.TrySet(slot, InHand))
+                    return;
+                InHand = prev;
 
-            if (buyslot < 0 || buyslot >= buyfrom.Width * buyfrom.Height)
-                return false;
+                // Get money from item sold
+                Money += con[slot].Price;
+                // Substract money if item was also bought
+                if (InHand)
+                    Money -= InHand.Price;
 
-            var item = buyfrom[buyslot];
+                OnMoneyChanged?.Invoke(Money);
+            }
+            else
+            {
+                // Buy: Attempt to move item from Shop Container to Hand
+                var tobuy = con[slot];
+                
+                // No item there
+                if (!tobuy)
+                    return;
 
-            if (Money < item.Price)
-                return false;
+                // Cannot buy item
+                if (Money < tobuy.Price)
+                    return;
 
-            Money -= item.Price;
-            SwapItem(buyfrom, buyslot);
+                InHand = tobuy;
+                // Do not care if item will be duplicated
+                con.TrySet(slot, null);
 
-            return true;
-        }
-
-        // Attempt to sell item by placing in Shop Container
-        public bool TrySell(IContainer sellto, int sellslot)
-        {
-            if (!InHand)
-                return false;
-
-            if (sellslot < 0 || sellslot >= sellto.Width * sellto.Height)
-                return false;
-
-            var item = sellto[sellslot];
-
-            Money += item.Price;
-            SwapItem(sellto, sellslot);
-
-            return true;
+                Money -= InHand.Price;
+                OnMoneyChanged?.Invoke(Money);
+            }
+            cursor.Set(InHand);
         }
 
         public void OpenShop(Shop shop)
@@ -196,10 +205,12 @@ namespace ItemShop
 
         public event Action<int> OnItemChanged;
 
+        public bool IsShop => false;
+
         public bool TrySet(int slot, Item item) => false;
 
         public int IndexOf(int x, int y) =>
             x + y * Width;
-
     }
+
 }

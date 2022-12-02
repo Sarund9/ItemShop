@@ -38,16 +38,17 @@ namespace ItemShop
                 p.DisplayLine(pool.GetRandomLine());
                 p.ClearOptions();
                 active = true;
-                p.CreateOption("Back", () => { active = false; });
+                p.CreateOption("Back", () => active = false);
                 if (shop)
                 {
-                    //p.CreateOption("Shop", () =>
-                    //    PlayerInventory.Instance.OpenShop(shop)
-                    //);
+                    p.CreateOption("Shop", () =>
+                        PlayerInventory.Instance.OpenShop(shop)
+                    );
                 }
 
                 button.SetActive(false);
                 yield return new WaitWhile(() => CanTalk() && p.DisplayActive && active);
+                active = false;
                 button.SetActive(true);
                 p.Close();
             }

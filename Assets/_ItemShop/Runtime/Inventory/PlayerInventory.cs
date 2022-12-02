@@ -32,7 +32,12 @@ namespace ItemShop
         public Item this[int slot]
         {
             get => items[slot];
-            set => items[slot] = value;
+        }
+
+        public bool TrySet(int slot, Item item)
+        {
+            items[slot] = item;
+            return true;
         }
 
         public Item InHand { get; private set; }
@@ -64,6 +69,44 @@ namespace ItemShop
                 OnItemChanged.Invoke(i);
             }
         }
+
+        // Attempt to move item from Shop Container to Hand
+        public bool TryBuy(IContainer buyfrom, int buyslot)
+        {
+            if (InHand)
+                return false;
+
+            if (buyslot < 0 || buyslot >= buyfrom.Width * buyfrom.Height)
+                return false;
+
+            var item = buyfrom[buyslot];
+
+            if (Money < item.Price)
+                return false;
+
+            Money -= item.Price;
+            SwapItem(buyfrom, buyslot);
+
+            return true;
+        }
+
+        // Attempt to sell item by placing in Shop Container
+        public bool TrySell(IContainer sellto, int sellslot)
+        {
+            if (!InHand)
+                return false;
+
+            if (sellslot < 0 || sellslot >= sellto.Width * sellto.Height)
+                return false;
+
+            var item = sellto[sellslot];
+
+            Money += item.Price;
+            SwapItem(sellto, sellslot);
+
+            return true;
+        }
+
 
         public void SwapOpen()
         {
@@ -101,22 +144,18 @@ namespace ItemShop
             Array.Copy(old, items, Mathf.Min(old.Length, items.Length));
         }
 
-        public void OnGUI()
-        {
-            GUILayout.Label($"DEBUG\n" +
-                $"In Hand: {InHand}");
-        }
-
         public Item GetItem(int x, int y)
         {
             return items[IndexOf(x, y)];
         }
 
-        public void SwapItem(IContainer container, int slot)
+        public bool SwapItem(IContainer container, int slot)
         {
-            var hand = InHand;
-            InHand = container[slot];
-            container[slot] = hand;
+            var con = container[slot];
+            if (!container.TrySet(slot, InHand))
+                return false;
+            InHand = con;
+
 
             OnItemChanged?.Invoke(slot);
 
@@ -124,6 +163,7 @@ namespace ItemShop
 
             // TODO: Only do this when Mouse is used
             EventSystem.current.SetSelectedGameObject(null);
+            return true;
         }
     }
 
@@ -132,9 +172,11 @@ namespace ItemShop
         public int Width { get; }
         public int Height { get; }
         
-        public Item this[int slot] { get; set; }
+        public Item this[int slot] { get; }
 
         public event Action<int> OnItemChanged;
+
+        public bool TrySet(int slot, Item item) => false;
 
         public int IndexOf(int x, int y) =>
             x + y * Width;

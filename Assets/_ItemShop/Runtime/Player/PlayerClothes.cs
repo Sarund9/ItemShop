@@ -36,11 +36,18 @@ namespace ItemShop
         public Item this[int slot]
         {
             get => items[slot];
-            set {
-                items[slot] = value;
-                UpdateView(slot, value);
-                //OnItemChanged?.Invoke(slot);
-            }
+            //set {
+            //    items[slot] = value;
+            //    UpdateView(slot, value);
+            //    //OnItemChanged?.Invoke(slot);
+            //}
+        }
+
+        public bool TrySet(int slot, Item item)
+        {
+            items[slot] = item;
+            UpdateView(slot, item);
+            return true;
         }
 
         void Awake()

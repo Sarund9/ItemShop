@@ -61,6 +61,7 @@ namespace ItemShop
             }
         }
 
+        // Called by Buttons
         public void Clicked(int slot)
         {
             clothes.SwapItems(slot);

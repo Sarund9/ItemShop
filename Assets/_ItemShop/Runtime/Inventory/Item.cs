@@ -12,6 +12,9 @@ namespace ItemShop
         public string ItemName { get; set; }
 
         [field: SerializeField]
+        public int Price { get; private set; } = 20;
+
+        [field: SerializeField]
         public Sprite Sprite { get; set; }
 
         [field: SerializeField]

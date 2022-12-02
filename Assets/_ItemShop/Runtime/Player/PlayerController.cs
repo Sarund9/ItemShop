@@ -20,8 +20,7 @@ namespace ItemShop
         [SerializeField]
         Rigidbody2D rb;
 
-        [SerializeField]
-        PlayerInventory inventory;
+        public bool MovementEnabled => !PlayerInventory.Instance.Open;
 
         public void OnInteract(InputAction.CallbackContext context)
         {
@@ -30,7 +29,8 @@ namespace ItemShop
 
         public void OnMovement(InputAction.CallbackContext context)
         {
-            rb.velocity = context.ReadValue<Vector2>() * moveSpeed;
+            if (MovementEnabled)
+                rb.velocity = context.ReadValue<Vector2>() * moveSpeed;
         }
 
         void Awake()
@@ -47,7 +47,12 @@ namespace ItemShop
         {
             if (context.performed)
             {
-                inventory.SwapOpen();
+                var inv = PlayerInventory.Instance;
+                inv.SwapOpen();
+                if (!MovementEnabled)
+                {
+                    rb.velocity = Vector2.zero;
+                }
             }
         }
     }

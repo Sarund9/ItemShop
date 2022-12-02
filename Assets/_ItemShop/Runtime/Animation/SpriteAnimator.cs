@@ -124,12 +124,11 @@ namespace ItemShop
             RefreshSprites();
         }
 
-        private void RefreshSprites()
+        public void RefreshSprites()
         {
             spriteRenderer.sprite = current.Main.Keys[currentIndex];
 
             current.SetSprites(currentIndex);
-
         }
 
         #region Unity

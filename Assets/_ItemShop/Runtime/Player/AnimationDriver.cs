@@ -11,20 +11,22 @@ namespace ItemShop
         Rigidbody2D rb;
 
         [SerializeField]
-        List<SpriteAnimator> animators = new();
+        PlayerController playerController;
+
+        [SerializeField]
+        SpriteAnimator animator;
 
         [SerializeField]
         float animationVelocityMult = 1;
+
+        bool lastMovementEnabled = true;
 
         public void Update()
         {
             if (!rb)
                 return;
 
-            foreach (var anim in animators)
-            {
-                Process(anim);
-            }
+            Process(animator);
         }
 
         private void Process(SpriteAnimator animator)
@@ -33,6 +35,13 @@ namespace ItemShop
             animator.Pause = vel.magnitude < .01f;
 
             animator.SetSpeed(Mathf.Max(vel.magnitude * 2, 1));
+
+            if (lastMovementEnabled != playerController.MovementEnabled)
+            {
+                lastMovementEnabled = playerController.MovementEnabled;
+                animator.SetCurrent("down");
+                animator.RefreshSprites();
+            }
 
             if (animator.Pause)
                 return;

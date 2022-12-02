@@ -14,14 +14,6 @@ namespace ItemShop
         [SerializeField]
         Item[] items;
 
-        public event Action<int> OnItemChanged;
-
-        [field: SerializeField, Range(1, 20)]
-        public int Width { get; private set; }
-
-        [field: SerializeField, Range(1, 20)]
-        public int Height { get; private set; }
-
         [SerializeField]
         CursorSprite cursor;
 
@@ -30,6 +22,12 @@ namespace ItemShop
 
         [SerializeField]
         DialoguePlayer player;
+
+        [field: SerializeField, Range(1, 20)]
+        public int Width { get; private set; }
+
+        [field: SerializeField, Range(1, 20)]
+        public int Height { get; private set; }
 
         public Item this[int slot]
         {
@@ -40,6 +38,13 @@ namespace ItemShop
         public Item InHand { get; private set; }
 
         public bool Open { get; private set; }
+
+        [field: SerializeField]
+        public int Money { get; private set; }
+
+        public event Action<int> OnItemChanged;
+
+        public event Action<int> OnMoneyChanged;
 
         public int IndexOf(int x, int y) =>
             x + y * Width;

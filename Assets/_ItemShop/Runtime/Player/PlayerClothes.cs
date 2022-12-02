@@ -39,7 +39,7 @@ namespace ItemShop
             set {
                 items[slot] = value;
                 UpdateView(slot, value);
-                OnItemChanged?.Invoke(slot);
+                //OnItemChanged?.Invoke(slot);
             }
         }
 
@@ -120,7 +120,7 @@ namespace ItemShop
 
             }
             
-            inv.ItemSwapped(this, slot);
+            inv.SwapItem(this, slot);
             UpdateView(slot, items[slot]);
         }
     }

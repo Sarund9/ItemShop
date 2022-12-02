@@ -9,6 +9,7 @@ namespace ItemShop
     public class DialoguePlayer : MonoBehaviour
     {
         public static DialoguePlayer Instance { get; private set; }
+        public bool DisplayActive { get; private set; }
 
         [SerializeField]
         TMP_Text text;
@@ -32,6 +33,12 @@ namespace ItemShop
 
         public void DisplayLine(string line)
         {
+            var inv = PlayerInventory.Instance;
+            if (inv && inv.Open)
+                inv.SwapOpen();
+
+            DisplayActive = true;
+
             gameObject.SetActive(true);
             text.text = line;
         }
@@ -39,6 +46,7 @@ namespace ItemShop
         public void Close()
         {
             gameObject.SetActive(false);
+            DisplayActive = false;
         }
     }
 }

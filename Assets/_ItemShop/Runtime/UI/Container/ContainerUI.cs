@@ -50,7 +50,7 @@ namespace ItemShop
         {
             var inv = PlayerInventory.Instance;
 
-            inv.ItemSwapped(container.Value, slot);
+            inv.SwapItem(container.Value, slot);
 
             //if (inv.InHand != null)
             //{
@@ -142,6 +142,8 @@ namespace ItemShop
                 slots[i].SetCallback(OnButtonPressed);
                 slots[i].Initialize(sprite, pressed, i);
             }
+
+            gameObject.SetActive(false);
         }
 
         private void Inventory_OnItemChanged(int index)

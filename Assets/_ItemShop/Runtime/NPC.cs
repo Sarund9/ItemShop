@@ -28,14 +28,14 @@ namespace ItemShop
         {
             if (CanTalk() && DialoguePlayer.Exists(out var p))
             {
-                StartCoroutine(InRange(p));
+                StartCoroutine(Cor(p));
             }
 
-            IEnumerator InRange(DialoguePlayer p)
+            IEnumerator Cor(DialoguePlayer p)
             {
                 p.DisplayLine(pool.GetRandomLine());
                 button.SetActive(false);
-                yield return new WaitWhile(CanTalk);
+                yield return new WaitWhile(() => CanTalk() && p.DisplayActive);
                 button.SetActive(true);
                 p.Close();
             }

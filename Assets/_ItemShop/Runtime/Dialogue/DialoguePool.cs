@@ -20,7 +20,7 @@ namespace ItemShop
                 return "<Err: No Lines>";
             //return Lines[Random.Range(0, Lines.Count)];
 
-            current += Random.Range(2, Lines.Count * 4);
+            current += Random.Range(2, Lines.Count - 1);
             current %= Lines.Count;
             return Lines[current];
         }

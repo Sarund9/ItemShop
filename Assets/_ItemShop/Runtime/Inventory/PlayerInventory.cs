@@ -25,6 +25,12 @@ namespace ItemShop
         [SerializeField]
         CursorSprite cursor;
 
+        [SerializeField]
+        GameObject ui;
+
+        [SerializeField]
+        DialoguePlayer player;
+
         public Item this[int slot]
         {
             get => items[slot];
@@ -32,6 +38,8 @@ namespace ItemShop
         }
 
         public Item InHand { get; private set; }
+
+        public bool Open { get; private set; }
 
         public int IndexOf(int x, int y) =>
             x + y * Width;
@@ -49,6 +57,34 @@ namespace ItemShop
             for (int i = 0; i < items.Length; i++)
             {
                 OnItemChanged.Invoke(i);
+            }
+        }
+
+        public void SwapOpen()
+        {
+            Open = !Open;
+            ui.SetActive(Open);
+            if (Open)
+            {
+                // Opened
+                if (player.DisplayActive)
+                {
+                    player.Close();
+                }
+            }
+            else
+            {
+                // Closed
+                if (InHand)
+                {
+                    // Find the first empty slot and drop the Item
+                    for (int i = 0; i < items.Length; i++)
+                    {
+                        if (items[i] == null)
+                        { SwapItem(this, i); break; }
+                    }
+                    
+                }
             }
         }
 
@@ -71,7 +107,7 @@ namespace ItemShop
             return items[IndexOf(x, y)];
         }
 
-        public void ItemSwapped(IContainer container, int slot)
+        public void SwapItem(IContainer container, int slot)
         {
             var hand = InHand;
             InHand = container[slot];

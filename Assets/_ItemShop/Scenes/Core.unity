@@ -374,7 +374,7 @@ MonoBehaviour:
   menu:
     path: Assets/_ItemShop/Scenes/Menu.unity
   input: {fileID: 1010575380}
-  cam: {fileID: 0}
+  cam: {fileID: 519420031}
 --- !u!4 &1010575379
 Transform:
   m_ObjectHideFlags: 0

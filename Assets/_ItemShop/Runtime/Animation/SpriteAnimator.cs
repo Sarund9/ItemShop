@@ -18,7 +18,9 @@ namespace ItemShop
 
         class AnimationSet
         {
-            List<(SpriteAnimation anim, SpriteRenderer render)> overlays = new();
+            //List<(SpriteAnimation anim, SpriteRenderer render)> overlays = new();
+
+            Dictionary<SpriteRenderer, SpriteAnimation> overlays = new();
 
             public AnimationSet(SpriteAnimation anim)
             {
@@ -28,23 +30,40 @@ namespace ItemShop
             
             public int OverlayCount => overlays.Count;
 
-            public void AddOverlay(SpriteAnimation anim, SpriteRenderer render)
+            public void SetOverlay(SpriteAnimation anim, SpriteRenderer render)
             {
-                overlays.Add((anim, render));
-            }
-            public void RemoveOverlay(int index)
-            {
-                overlays.RemoveAt(index);
-            }
-
-            public void SetOverlaySprite(int o, int index)
-            {
-                if (o >= overlays.Count || index >= overlays[o].anim.Keys.Count)
-                    return;
-
-                overlays[o].render.sprite = overlays[o].anim.Keys[index];
+                if (anim)
+                    overlays[render] = anim;
+                else
+                    RemoveOverlay(render);
             }
 
+
+            public void RemoveOverlay(SpriteRenderer renderer)
+            {
+                if (overlays.Remove(renderer))
+                {
+                    renderer.sprite = null;
+                }
+            }
+
+            //public void SetOverlaySprite(int o, int index)
+            //{
+            //    if (o >= overlays.Count || index >= overlays[o].anim.Keys.Count)
+            //        return;
+
+            //    overlays[o].render.sprite = overlays[o].anim.Keys[index];
+            //}
+
+            public void SetSprites(int index)
+            {
+                foreach (var ol in overlays)
+                {
+                    if (index >= ol.Value.Keys.Count)
+                        continue;
+                    ol.Key.sprite = ol.Value.Keys[index];
+                }
+            }
         }
 
         [SerializeField]
@@ -86,29 +105,31 @@ namespace ItemShop
         /// <param name="name"> Name of the Animation </param>
         /// <param name="anim"> Animation to Play </param>
         /// <param name="target"> SpriteRenderer to play it on </param>
-        public void CreateOverlay(string name, SpriteAnimation anim, SpriteRenderer target)
+        public void SetOverlay(string name, SpriteAnimation anim, SpriteRenderer target)
         {
             if (!animations.ContainsKey(name))
                 return;
 
-            animations[name].AddOverlay(anim, target);
+            animations[name].SetOverlay(anim, target);
+            
+            RefreshSprites();
         }
-        
-        private void SetSprites(int index)
+        public void RemoveOverlay(string name, SpriteRenderer target)
         {
-            spriteRenderer.sprite = current.Main.Keys[index];
+            if (!animations.ContainsKey(name))
+                return;
 
-            for (int i = 0; i < current.OverlayCount; i++)
-            {
-                //if (overlays.Count >= i)
-                //    break;
-                //if (index > current.Overlays[i].anim.Keys.Count)
-                //    continue;
+            animations[name].RemoveOverlay(target);
 
-                current.SetOverlaySprite(i, index);
+            RefreshSprites();
+        }
 
-                //overlays[i].sprite = current.Overlays[i].Keys[index];
-            }
+        private void RefreshSprites()
+        {
+            spriteRenderer.sprite = current.Main.Keys[currentIndex];
+
+            current.SetSprites(currentIndex);
+
         }
 
         #region Unity
@@ -135,7 +156,7 @@ namespace ItemShop
                 if (Pause)
                 {
                     currentIndex = 0;
-                    SetSprites(currentIndex);
+                    RefreshSprites();
                     yield return new WaitUntil(() => !Pause);
                 }
 
@@ -145,7 +166,7 @@ namespace ItemShop
                 if (currentIndex >= current.Main.Keys.Count)
                     currentIndex = 0;
 
-                SetSprites(currentIndex);
+                RefreshSprites();
             }
         }
 

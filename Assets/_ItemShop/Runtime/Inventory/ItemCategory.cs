@@ -8,5 +8,10 @@ namespace ItemShop
         [field: SerializeField]
         public string CategoryName { get; set; }
 
+
+        public override string ToString()
+        {
+            return $"Category '{CategoryName}'";
+        }
     }
 }

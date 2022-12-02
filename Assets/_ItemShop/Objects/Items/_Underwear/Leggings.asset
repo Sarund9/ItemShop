@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79b9e41b8794edc45b88070b56f36ac9, type: 3}
+  m_Name: Leggings
+  m_EditorClassIdentifier: 
+  <ItemName>k__BackingField: 
+  <Sprite>k__BackingField: {fileID: 529381735, guid: d5021ccc698037145a07c785f53366d0, type: 3}
+  <SpriteScale>k__BackingField: 1
+  <SpriteOffset>k__BackingField: {x: 0, y: 0}
+  <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
+  <Category>k__BackingField: {fileID: 11400000, guid: 2b7ca720d5613c049a136fbd4dbd2242, type: 2}
+  UpAnim: {fileID: 11400000, guid: cb7c3b6169454e5419b9be3c940c7e26, type: 2}
+  DownAnim: {fileID: 11400000, guid: 3ba0d3f58b590084a83a3e0c92b1e4af, type: 2}
+  LeftAnim: {fileID: 11400000, guid: 94a4cd046a6f6e0489efddd6a29a8d43, type: 2}
+  RightAnim: {fileID: 11400000, guid: e6a987cf99dcf7f44a11475a0f8d344f, type: 2}

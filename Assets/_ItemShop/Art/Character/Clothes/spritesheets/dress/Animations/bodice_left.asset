@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 707293ddf5dc2a945af63351cb21b6b8, type: 3}
+  m_Name: bodice_left
+  m_EditorClassIdentifier: 
+  <Keys>k__BackingField:
+  - {fileID: 39329243, guid: 0b70def8c40f2ed4d9c6e7f3a529cef9, type: 3}
+  - {fileID: -264915418, guid: 0b70def8c40f2ed4d9c6e7f3a529cef9, type: 3}
+  - {fileID: -1027696948, guid: 0b70def8c40f2ed4d9c6e7f3a529cef9, type: 3}
+  - {fileID: -775385021, guid: 0b70def8c40f2ed4d9c6e7f3a529cef9, type: 3}
+  - {fileID: 1946592753, guid: 0b70def8c40f2ed4d9c6e7f3a529cef9, type: 3}
+  - {fileID: -1718242676, guid: 0b70def8c40f2ed4d9c6e7f3a529cef9, type: 3}
+  - {fileID: 254004615, guid: 0b70def8c40f2ed4d9c6e7f3a529cef9, type: 3}
+  - {fileID: -1833692357, guid: 0b70def8c40f2ed4d9c6e7f3a529cef9, type: 3}
+  <Delay>k__BackingField: 0.2

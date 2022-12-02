@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 707293ddf5dc2a945af63351cb21b6b8, type: 3}
+  m_Name: leggings_down
+  m_EditorClassIdentifier: 
+  <Keys>k__BackingField:
+  - {fileID: 529381735, guid: d5021ccc698037145a07c785f53366d0, type: 3}
+  - {fileID: 1565286264, guid: d5021ccc698037145a07c785f53366d0, type: 3}
+  - {fileID: -166193077, guid: d5021ccc698037145a07c785f53366d0, type: 3}
+  - {fileID: -318591326, guid: d5021ccc698037145a07c785f53366d0, type: 3}
+  - {fileID: -1778049618, guid: d5021ccc698037145a07c785f53366d0, type: 3}
+  - {fileID: 109021242, guid: d5021ccc698037145a07c785f53366d0, type: 3}
+  - {fileID: -1932881282, guid: d5021ccc698037145a07c785f53366d0, type: 3}
+  - {fileID: -299172792, guid: d5021ccc698037145a07c785f53366d0, type: 3}
+  <Delay>k__BackingField: 0.2

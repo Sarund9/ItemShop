@@ -21,15 +21,15 @@ namespace ItemShop
         private void Start()
         {
             cam = GM.Camera;
-            player = PlayerInventory.Instance.transform;
+            player = PlayerController.Instance.transform;
         }
 
 
         private void Update()
         {
-            var pos = cam.WorldToScreenPoint(player.position);
+            //var pos = cam.WorldToScreenPoint(player.position);
 
-            transform.position = pos + (Vector3)offset;
+            transform.position = player.position + (Vector3)offset;
         }
 
         public void Clicked(int slot)

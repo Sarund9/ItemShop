@@ -17,6 +17,7 @@ namespace ItemShop
             {
                 canvas.worldCamera = GM.Camera;
             }
+
         }
     }
 }

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9faed3e4527f474c8009e687e0811aa, type: 3}
+  m_Name: Shopkeeper_Lines
+  m_EditorClassIdentifier: 
+  <Lines>k__BackingField:
+  - How can I help you?
+  - Everything's for sale, my friend. Everything.
+  - Life's like a box of clothes, you never know what you are gonna wear!
+  - Hmm?
+  - You want rings? You want gloves? You want a knife? I have dresses.
+  - I hear there's a [REDACTED]... oh never mind.
+  - Hey, this house is secure, right? Right?
+  - I don't know what you overheard, but the Common Clothes Trader is still open,
+    feel free to shop.
+  - I know some of it looks like junk, but everything's fashionable in the right
+    lighting.

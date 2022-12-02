@@ -14,6 +14,9 @@ namespace ItemShop
         [SerializeField]
         float talkDistance = 5;
 
+        [SerializeField]
+        DialoguePool pool;
+
         bool active;
 
 
@@ -23,17 +26,18 @@ namespace ItemShop
 
         public void Talk()
         {
-            if (CanTalk())
+            if (CanTalk() && DialoguePlayer.Exists(out var p))
             {
-                StartCoroutine(InRange());
+                StartCoroutine(InRange(p));
             }
 
-            IEnumerator InRange()
+            IEnumerator InRange(DialoguePlayer p)
             {
-                var p = PlayerController.Instance;
+                p.DisplayLine(pool.GetRandomLine());
                 button.SetActive(false);
                 yield return new WaitWhile(CanTalk);
                 button.SetActive(true);
+                p.Close();
             }
         }
     }

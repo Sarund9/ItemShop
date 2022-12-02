@@ -12,29 +12,6 @@ namespace ItemShop
 
         Item[] inventory;
 
-        public Item this[int slot]
-        {
-            get => selection[slot];
-            //set {
-            //    // Do not allow overriding of Slot Items
-            //    if (selection[slot] != null)
-            //        return;
-
-            //    inventory[slot] = value;
-            //}
-        }
-
-        public bool TrySet(int slot, Item item)
-        {
-            // Do not allow overriding of Slot Items
-            if (selection[slot] != null)
-                return false;
-
-            inventory[slot] = item;
-            return true;
-        }
-
-
         [field: SerializeField, Range(1, 20)]
         public int Width { get; private set; }
 
@@ -43,19 +20,41 @@ namespace ItemShop
 
         public event Action<int> OnItemChanged;
 
+        public Item this[int slot] => inventory[slot];
 
-        public void OpenShop()
+        public bool TrySet(int slot, Item item)
+        {
+            // Do not allow overriding of Slot Items
+            if (slot < selection.Count && selection[slot] != null)
+                return false;
+
+            OnItemChanged?.Invoke(slot);
+            inventory[slot] = item;
+            return true;
+        }
+
+        private void FillShop()
         {
             for (int i = 0; i < selection.Count; i++)
             {
                 inventory[i] = selection[i];
+                OnItemChanged?.Invoke(i);
             }
         }
 
-        public void Awake()
+        public void Start()
         {
-            inventory = new Item[selection.Count];
+            inventory = new Item[Width * Height];
+
+            FillShop();
         }
 
+        public void ShopOpened()
+        {
+            for (int i = 0; i < selection.Count; i++)
+            {
+                //OnItemChanged?.Invoke(i);
+            }
+        }
     }
 }

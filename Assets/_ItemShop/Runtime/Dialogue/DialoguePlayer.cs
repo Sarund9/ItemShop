@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace ItemShop
 {
@@ -13,6 +14,14 @@ namespace ItemShop
 
         [SerializeField]
         TMP_Text text;
+
+        [SerializeField]
+        TextButton optionPrefab;
+
+        [SerializeField]
+        Transform optionParent;
+
+        List<TextButton> options = new();
 
         public static bool Exists(out DialoguePlayer player)
         {
@@ -31,6 +40,15 @@ namespace ItemShop
             gameObject.SetActive(false);
         }
 
+        public void ClearOptions()
+        {
+            foreach (var item in options)
+            {
+                item.Delete();
+            }
+            options.Clear();
+        }
+
         public void DisplayLine(string line)
         {
             var inv = PlayerInventory.Instance;
@@ -41,6 +59,16 @@ namespace ItemShop
 
             gameObject.SetActive(true);
             text.text = line;
+        }
+
+        public void CreateOption(string name, UnityAction callback)
+        {
+            var btn = Instantiate(optionPrefab, optionParent);
+
+            btn.Text = name;
+            btn.SetCallback(callback);
+
+            options.Add(btn);
         }
 
         public void Close()

@@ -43,7 +43,11 @@ namespace ItemShop
         public IContainer TargetContainer
         {
             get => container.Value;
-            set => container.Value = value;
+            set {
+                container.Value = value;
+                if (value != null && Application.isPlaying)
+                    CreateUI();
+            }
         }
 
         private void OnButtonPressed(int slot)
@@ -51,32 +55,37 @@ namespace ItemShop
             var inv = PlayerInventory.Instance;
 
             inv.SwapItem(container.Value, slot);
-
-            //if (inv.InHand != null)
-            //{
-            //    var swap = inventory[slot];
-            //    inventory[slot] = inv.InHand;
-            //    inv.InHand = swap;
-            //}
         }
 
         private void Awake()
         {
             if (container.Value == null)
                 return;
+            
+            CreateUI();
+        }
 
-            var inventory = container.Value;
-            inventory.OnItemChanged += Inventory_OnItemChanged;
+        private void CreateUI()
+        {
+            var inv = container.Value;
+            inv.OnItemChanged += ItemChanged;
 
-            self.sizeDelta = new Vector2(slotSize * inventory.Width, slotSize * inventory.Height);
+            self.sizeDelta = new Vector2(slotSize * inv.Width, slotSize * inv.Height);
 
-            slots = new ContainerUIItem[inventory.Width * inventory.Height];
+            // Prevent extra slots on Recall
+            if (slots != null)
+                foreach (var item in slots)
+                    if (item)
+                        Destroy(item.gameObject);
+            
+
+            slots = new ContainerUIItem[inv.Width * inv.Height];
             for (int i = 0; i < slots.Length; i++)
             {
                 slots[i] = Instantiate(itemPrefab, layout);
 
-                int W = inventory.Width,
-                    H = inventory.Height;
+                int W = inv.Width,
+                    H = inv.Height;
 
                 bool istop = i < W;
                 bool isbottom = i >= W * (H - 1);
@@ -87,7 +96,7 @@ namespace ItemShop
                     sprite = center,
                     pressed = center_pressed;
 
-                #region Determine
+                #region Determine Sprite
                 if (isleft)
                 {
                     if (istop)
@@ -146,7 +155,7 @@ namespace ItemShop
             gameObject.SetActive(false);
         }
 
-        private void Inventory_OnItemChanged(int index)
+        private void ItemChanged(int index)
         {
             slots[index].SetItem(container.Value[index]);
         }

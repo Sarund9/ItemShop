@@ -21,7 +21,10 @@ namespace ItemShop
         GameObject ui;
 
         [SerializeField]
-        DialoguePlayer player;
+        DialoguePlayer dialoguePlayer;
+
+        [SerializeField]
+        ContainerUI shopUi;
 
         [field: SerializeField, Range(1, 20)]
         public int Width { get; private set; }
@@ -43,6 +46,8 @@ namespace ItemShop
         public Item InHand { get; private set; }
 
         public bool Open { get; private set; }
+
+        public Shop CurrentShop { get; private set; }
 
         [field: SerializeField]
         public int Money { get; private set; }
@@ -107,6 +112,16 @@ namespace ItemShop
             return true;
         }
 
+        public void OpenShop(Shop shop)
+        {
+            if (!Open)
+                SwapOpen();
+
+            shopUi.TargetContainer = shop;
+            shopUi.gameObject.SetActive(true);
+            CurrentShop = shop;
+            shop.ShopOpened();
+        }
 
         public void SwapOpen()
         {
@@ -115,9 +130,9 @@ namespace ItemShop
             if (Open)
             {
                 // Opened
-                if (player.DisplayActive)
+                if (dialoguePlayer.DisplayActive)
                 {
-                    player.Close();
+                    dialoguePlayer.Close();
                 }
             }
             else
@@ -131,7 +146,12 @@ namespace ItemShop
                         if (items[i] == null)
                         { SwapItem(this, i); break; }
                     }
-                    
+                }
+                if (CurrentShop)
+                {
+                    shopUi.TargetContainer = null;
+                    shopUi.gameObject.SetActive(false);
+                    CurrentShop = null;
                 }
             }
         }

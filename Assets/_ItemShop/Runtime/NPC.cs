@@ -17,8 +17,10 @@ namespace ItemShop
         [SerializeField]
         DialoguePool pool;
 
-        bool active;
+        [SerializeField]
+        Shop shop;
 
+        bool active;
 
         bool CanTalk() =>
             Vector3.Distance(transform.position,
@@ -34,8 +36,18 @@ namespace ItemShop
             IEnumerator Cor(DialoguePlayer p)
             {
                 p.DisplayLine(pool.GetRandomLine());
+                p.ClearOptions();
+                active = true;
+                p.CreateOption("Back", () => { active = false; });
+                if (shop)
+                {
+                    //p.CreateOption("Shop", () =>
+                    //    PlayerInventory.Instance.OpenShop(shop)
+                    //);
+                }
+
                 button.SetActive(false);
-                yield return new WaitWhile(() => CanTalk() && p.DisplayActive);
+                yield return new WaitWhile(() => CanTalk() && p.DisplayActive && active);
                 button.SetActive(true);
                 p.Close();
             }

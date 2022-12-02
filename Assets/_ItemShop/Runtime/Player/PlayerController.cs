@@ -15,6 +15,7 @@ namespace ItemShop
         [SerializeField]
         Rigidbody2D rb;
 
+
         public void OnInteract(InputAction.CallbackContext context)
         {
             

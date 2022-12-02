@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 707293ddf5dc2a945af63351cb21b6b8, type: 3}
+  m_Name: shoes_right
+  m_EditorClassIdentifier: 
+  <Keys>k__BackingField:
+  - {fileID: 2073671331, guid: ab1761b8a852cde40b5c92ea66175b55, type: 3}
+  - {fileID: 1330974726, guid: ab1761b8a852cde40b5c92ea66175b55, type: 3}
+  - {fileID: 1801814821, guid: ab1761b8a852cde40b5c92ea66175b55, type: 3}
+  - {fileID: -22779971, guid: ab1761b8a852cde40b5c92ea66175b55, type: 3}
+  - {fileID: 1285690172, guid: ab1761b8a852cde40b5c92ea66175b55, type: 3}
+  - {fileID: -1007095445, guid: ab1761b8a852cde40b5c92ea66175b55, type: 3}
+  - {fileID: 759059274, guid: ab1761b8a852cde40b5c92ea66175b55, type: 3}
+  - {fileID: 1024004375, guid: ab1761b8a852cde40b5c92ea66175b55, type: 3}
+  <Delay>k__BackingField: 0.2

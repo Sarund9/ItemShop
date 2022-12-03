@@ -22,7 +22,7 @@ namespace ItemShop
         [SerializeField]
         Rigidbody2D rb;
 
-
+        bool gamePaused = false;
 
         public bool MovementEnabled => !PlayerInventory.Instance.Open;
 
@@ -38,7 +38,7 @@ namespace ItemShop
 
         public void OnMovement(InputAction.CallbackContext context)
         {
-            if (MovementEnabled)
+            if (MovementEnabled && !gamePaused)
                 rb.velocity = context.ReadValue<Vector2>() * moveSpeed;
         }
 
@@ -52,7 +52,7 @@ namespace ItemShop
             GM.Input.SubscribePlayer(this);
             var mod = GM.CameraControl.CreateModifier();
             mod.Target = transform;
-
+            GM.OnGamePaused += p => gamePaused = p;
         }
 
         public void OnOpenInventory(InputAction.CallbackContext context)

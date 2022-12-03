@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79b9e41b8794edc45b88070b56f36ac9, type: 3}
+  m_Name: Green Pants
+  m_EditorClassIdentifier: 
+  <ItemName>k__BackingField: Pants
+  <Price>k__BackingField: 90
+  <Sprite>k__BackingField: {fileID: -420396745, guid: 4744f611ae5fd334b9e543eef833d801, type: 3}
+  <SpriteScale>k__BackingField: 2
+  <SpriteOffset>k__BackingField: {x: 0, y: 20}
+  <Color>k__BackingField: {r: 0.088777125, g: 0.5377358, b: 0.21455096, a: 1}
+  <Category>k__BackingField: {fileID: 11400000, guid: 2b7ca720d5613c049a136fbd4dbd2242, type: 2}
+  <Description>k__BackingField: 
+  <OrderInLayer>k__BackingField: 2
+  UpAnim: {fileID: 11400000, guid: e780d34f25cb730449755a706b9d74ec, type: 2}
+  DownAnim: {fileID: 11400000, guid: 647e5ec90b7743a419ccb4cb2e3c2ab5, type: 2}
+  LeftAnim: {fileID: 11400000, guid: e5f309e15d1444941b9fa6fb2f1a5d91, type: 2}
+  RightAnim: {fileID: 11400000, guid: 503e2dc10ffbd9f40837915ef025e879, type: 2}

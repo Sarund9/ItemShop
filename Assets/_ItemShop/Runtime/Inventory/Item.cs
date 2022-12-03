@@ -32,6 +32,9 @@ namespace ItemShop
         [field: SerializeField]
         public string Description { get; private set; }
 
+        [field: SerializeField]
+        public int OrderInLayer { get; private set; }
+
         // Animations for the Character
         public SpriteAnimation UpAnim, DownAnim, LeftAnim, RightAnim;
 

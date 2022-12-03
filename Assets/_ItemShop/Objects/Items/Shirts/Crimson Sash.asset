@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79b9e41b8794edc45b88070b56f36ac9, type: 3}
+  m_Name: Crimson Sash
+  m_EditorClassIdentifier: 
+  <ItemName>k__BackingField: Crimson Sash
+  <Price>k__BackingField: 60
+  <Sprite>k__BackingField: {fileID: -819268082, guid: 675384f051a34304890e14627411be2b, type: 3}
+  <SpriteScale>k__BackingField: 2
+  <SpriteOffset>k__BackingField: {x: 0, y: 10}
+  <Color>k__BackingField: {r: 0.74509805, g: 0.08627451, b: 0.13527806, a: 1}
+  <Category>k__BackingField: {fileID: 11400000, guid: 25f22e353b9076142bc9cc8bf9a8c723, type: 2}
+  <Description>k__BackingField: 
+  <OrderInLayer>k__BackingField: 6
+  UpAnim: {fileID: 11400000, guid: 3a9283401668aec4dac8adcce9913e77, type: 2}
+  DownAnim: {fileID: 11400000, guid: d89ca9e9f7c99b54caa51512259d2123, type: 2}
+  LeftAnim: {fileID: 11400000, guid: 5ccfb77e353d5be4584f9847d735ca18, type: 2}
+  RightAnim: {fileID: 11400000, guid: 2222908271d3db24a9594cd133ea04fd, type: 2}

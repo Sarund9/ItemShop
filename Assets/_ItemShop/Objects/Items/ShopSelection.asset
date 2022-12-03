@@ -13,7 +13,13 @@ MonoBehaviour:
   m_Name: ShopSelection
   m_EditorClassIdentifier: 
   <Items>k__BackingField:
-  - {fileID: 11400000, guid: ba926d8ef769fae40afedc38994beeb2, type: 2}
-  - {fileID: 11400000, guid: c4948cec455b5b741951ef44813a6147, type: 2}
   - {fileID: 11400000, guid: c44d41ebc08543648a3a8f85c70146a9, type: 2}
   - {fileID: 11400000, guid: 2863a2899a7cfa24185b0f6110e26d9b, type: 2}
+  - {fileID: 11400000, guid: 856622f612bff1445bae99c1f93116d8, type: 2}
+  - {fileID: 11400000, guid: 2a4e3d1b9173a66488a6dfe4eacb88db, type: 2}
+  - {fileID: 11400000, guid: c4948cec455b5b741951ef44813a6147, type: 2}
+  - {fileID: 11400000, guid: 1770c8dc9c5d3f749a0401bcde2801e2, type: 2}
+  - {fileID: 11400000, guid: a0e2d27fdf538234b9d0c9a5863b7155, type: 2}
+  - {fileID: 11400000, guid: ba926d8ef769fae40afedc38994beeb2, type: 2}
+  - {fileID: 11400000, guid: 817512603cb8fc94c8a761e97440dbc4, type: 2}
+  - {fileID: 11400000, guid: 6b9df1d5b151b0a468e1ba46fc1e793e, type: 2}

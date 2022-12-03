@@ -89,6 +89,7 @@ namespace ItemShop
                 animator.SetOverlay("left", item.LeftAnim, slot.render);
                 animator.SetOverlay("right", item.RightAnim, slot.render);
                 slot.render.color = item.Color;
+                slot.render.sortingOrder = item.OrderInLayer;
             }
             else
             {

@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79b9e41b8794edc45b88070b56f36ac9, type: 3}
-  m_Name: White Shoes
+  m_Name: Black Shoes
   m_EditorClassIdentifier: 
-  <ItemName>k__BackingField: White Shoes
-  <Price>k__BackingField: 120
+  <ItemName>k__BackingField: Black Shoes
+  <Price>k__BackingField: 85
   <Sprite>k__BackingField: {fileID: -1929830045, guid: ab1761b8a852cde40b5c92ea66175b55, type: 3}
   <SpriteScale>k__BackingField: 2
   <SpriteOffset>k__BackingField: {x: 0, y: 25}
-  <Color>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
+  <Color>k__BackingField: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 1}
   <Category>k__BackingField: {fileID: 11400000, guid: da2b7ff93fc60d64fb638731e2c825b4, type: 2}
   <Description>k__BackingField: 
   <OrderInLayer>k__BackingField: 1

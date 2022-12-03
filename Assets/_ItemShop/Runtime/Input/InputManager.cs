@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,18 @@ namespace ItemShop
     {
         PlayerInput input;
 
+
+        //public bool PlayerEnabled
+        //{
+        //    get => input.Character.enabled;
+        //    set
+        //    {
+        //        if (value)
+        //            input.Character.Enable();
+        //        else
+        //            input.Character.Disable();
+        //    }
+        //}
 
         private void Awake()
         {
@@ -20,5 +33,10 @@ namespace ItemShop
             input.Character.SetCallbacks(character);
         }
 
+        public void SubscribePause(PlayerInput.IPauseActions pause)
+        {
+            input.Pause.Enable();
+            input.Pause.SetCallbacks(pause);
+        }
     }
 }

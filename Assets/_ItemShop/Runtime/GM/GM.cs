@@ -22,11 +22,22 @@ namespace ItemShop
         [SerializeField]
         CameraController cameraController;
 
+        [SerializeField]
+        Pause pause;
+
         public static InputManager Input => I.input;
 
         public static Camera Camera => I.cam;
 
         public static CameraController CameraControl => I.cameraController;
+
+        public static bool GamePaused => I.pause.GamePaused;
+
+        public static event Action<bool> OnGamePaused
+        {
+            add => I.pause.OnGamePaused += value;
+            remove => I.pause.OnGamePaused -= value;
+        }
 
         private void Awake()
         {

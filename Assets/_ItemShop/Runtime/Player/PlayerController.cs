@@ -49,15 +49,23 @@ namespace ItemShop
 
         void Start()
         {
-            GM.Input.SubscribePlayer(this);
             var mod = GM.CameraControl.CreateModifier();
             mod.Target = transform;
             GM.OnGamePaused += p => gamePaused = p;
         }
 
+        private void OnEnable()
+        {
+            GM.Input.SubscribePlayer(this);
+        }
+        private void OnDisable()
+        {
+            GM.Input.UnsubscribePlayer();
+        }
+
         public void OnOpenInventory(InputAction.CallbackContext context)
         {
-            if (context.performed)
+            if (context.performed && !gamePaused)
             {
                 var inv = PlayerInventory.Instance;
                 inv.SwapOpen();

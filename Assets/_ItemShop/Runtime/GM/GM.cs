@@ -25,6 +25,9 @@ namespace ItemShop
         [SerializeField]
         Pause pause;
 
+        [SerializeField]
+        AudioSource globalSound;
+
         public static InputManager Input => I.input;
 
         public static Camera Camera => I.cam;
@@ -59,7 +62,15 @@ namespace ItemShop
         {
             return I.StartCoroutine(cor);
         }
+        public static void StopGlobalCoroutine(Coroutine coroutine)
+        {
+            I.StopCoroutine(coroutine);
+        }
 
+        public static void PlaySound(AudioClip clip)
+        {
+            I.globalSound.PlayOneShot(clip);
+        }
 
     }
 

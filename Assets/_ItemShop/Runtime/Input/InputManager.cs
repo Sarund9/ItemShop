@@ -38,5 +38,17 @@ namespace ItemShop
             input.Pause.Enable();
             input.Pause.SetCallbacks(pause);
         }
+
+        public void UnsubscribePlayer()
+        {
+            input.Character.SetCallbacks(null);
+            input.Character.Disable();
+        }
+
+        public void UnsubscribePause()
+        {
+            input.Pause.SetCallbacks(null);
+            input.Pause.Disable();
+        }
     }
 }

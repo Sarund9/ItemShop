@@ -20,6 +20,10 @@ namespace ItemShop
         [SerializeField]
         Shop shop;
 
+        [Header("Audio")]
+        [SerializeField]
+        AudioClip onTalk;
+
         bool active;
 
         bool CanTalk() =>
@@ -35,6 +39,7 @@ namespace ItemShop
 
             IEnumerator Cor(DialoguePlayer p)
             {
+                GM.PlaySound(onTalk);
                 p.DisplayLine(pool.GetRandomLine());
                 p.ClearOptions();
                 active = true;

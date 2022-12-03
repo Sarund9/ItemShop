@@ -55,6 +55,21 @@ namespace ItemShop
         [SerializeField, Min(.5f)]
         float clothingZoom = 2f;
 
+
+        [Header("Audio")]
+        [SerializeField]
+        AudioClip onItemSwapped;
+        
+        [SerializeField]
+        AudioClip
+            onTransactionBuy,
+            onTransactionSell,
+            onTransactionDenied;
+
+        [SerializeField]
+        AudioClip onOpened, onClosed;
+
+
         public event Action<int> OnItemChanged;
 
         public event Action<int> OnMoneyChanged;
@@ -90,11 +105,17 @@ namespace ItemShop
                 var prev = con[slot];
                 // If exchanging item, check that difference is valid
                 if (prev && prev.Price - InHand.Price < Money)
+                {
+                    GM.PlaySound(onTransactionDenied);
                     return;
+                }
                 
                 // Shops will not allow selling at a 'selection' slot
                 if (!con.TrySet(slot, InHand))
+                {
+                    GM.PlaySound(onTransactionDenied);
                     return;
+                }
                 InHand = prev;
 
                 // Get money from item sold
@@ -104,6 +125,7 @@ namespace ItemShop
                     Money -= InHand.Price;
 
                 OnMoneyChanged?.Invoke(Money);
+                GM.PlaySound(onTransactionSell);
             }
             else
             {
@@ -116,7 +138,10 @@ namespace ItemShop
 
                 // Cannot buy item
                 if (Money < tobuy.Price)
+                {
+                    GM.PlaySound(onTransactionDenied);
                     return;
+                }
 
                 InHand = tobuy;
                 // Do not care if item will be duplicated
@@ -124,6 +149,7 @@ namespace ItemShop
 
                 Money -= InHand.Price;
                 OnMoneyChanged?.Invoke(Money);
+                GM.PlaySound(onTransactionBuy);
             }
             cursor.Set(InHand);
         }
@@ -153,6 +179,8 @@ namespace ItemShop
 
                 whenOpen = GM.CameraControl.CreateModifier();
                 whenOpen.Zoom = clothingZoom;
+
+                GM.PlaySound(onOpened);
             }
             else
             {
@@ -174,6 +202,8 @@ namespace ItemShop
                 }
                 whenOpen.Disable();
                 whenOpen = null;
+
+                GM.PlaySound(onClosed);
             }
             OnOpenStateChanged?.Invoke(Open);
         }
@@ -203,6 +233,15 @@ namespace ItemShop
 
             cursor.Set(InHand);
 
+            // Play a sound if an Item was moved
+            if (InHand || container[slot])
+            {
+                var sfx = container.Clip;
+                if (!sfx)
+                    sfx = onItemSwapped;
+                GM.PlaySound(sfx);
+            }
+
             // TODO: Only do this when Mouse is used
             EventSystem.current.SetSelectedGameObject(null);
             return true;
@@ -219,6 +258,8 @@ namespace ItemShop
         public event Action<int> OnItemChanged;
 
         public bool IsShop => false;
+
+        public AudioClip Clip => null;
 
         public bool TrySet(int slot, Item item) => false;
 

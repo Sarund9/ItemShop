@@ -144,9 +144,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7234939918106615726}
+  - component: {fileID: 553554173881568240}
   - component: {fileID: 7234939918106615721}
   - component: {fileID: 7234939918106615720}
   - component: {fileID: 7234939918106615727}
+  - component: {fileID: 1630653156288660982}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -175,6 +177,51 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &553554173881568240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7234939918106615725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1630653156288660982}
+          m_TargetAssemblyTypeName: ItemShop.AudioHelper, ItemShopRuntime
+          m_MethodName: PlayGlobal
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 8300000, guid: 67e439c460480864a83da9a93335ee48, type: 3}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1630653156288660982}
+          m_TargetAssemblyTypeName: ItemShop.AudioHelper, ItemShopRuntime
+          m_MethodName: PlayGlobal
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 8300000, guid: 67e439c460480864a83da9a93335ee48, type: 3}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!222 &7234939918106615721
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -244,7 +291,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 1908115703, guid: 62a06aefff61a4143aad7bf2d2404621, type: 3}
     m_PressedSprite: {fileID: 391446291, guid: 62a06aefff61a4143aad7bf2d2404621, type: 3}
-    m_SelectedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 1908115703, guid: 62a06aefff61a4143aad7bf2d2404621, type: 3}
     m_DisabledSprite: {fileID: -1765173617, guid: 62a06aefff61a4143aad7bf2d2404621, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -256,4 +303,28 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7234939918106615720}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1630653156288660982}
+        m_TargetAssemblyTypeName: ItemShop.AudioHelper, ItemShopRuntime
+        m_MethodName: PlayGlobal
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: fbf792ebb7453d745bda9fd60aee5087, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1630653156288660982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7234939918106615725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb074c7558bbe6c46aa347ccd507349a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

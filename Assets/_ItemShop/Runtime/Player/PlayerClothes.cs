@@ -27,6 +27,12 @@ namespace ItemShop
         [SerializeField]
         Item[] items;
 
+        [Header("Audio")]
+        [SerializeField]
+        AudioClip onItemEquipped;
+
+        public AudioClip Clip => onItemEquipped;
+
         public event Action<int> OnItemChanged;
 
         public int Width => 1;

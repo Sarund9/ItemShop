@@ -2600,6 +2600,7 @@ GameObject:
   - component: {fileID: 5240943066174036450}
   - component: {fileID: 5240943066174036449}
   - component: {fileID: 5240943066174036451}
+  - component: {fileID: 7400297458188353830}
   m_Layer: 5
   m_Name: Head
   m_TagString: Untagged
@@ -2795,6 +2796,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &7400297458188353830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5240943066174036452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb074c7558bbe6c46aa347ccd507349a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5240943066211826504
 GameObject:
   m_ObjectHideFlags: 0
@@ -3056,6 +3069,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c44d41ebc08543648a3a8f85c70146a9, type: 2}
   - {fileID: 11400000, guid: c4948cec455b5b741951ef44813a6147, type: 2}
   - {fileID: 11400000, guid: ba926d8ef769fae40afedc38994beeb2, type: 2}
+  onItemEquipped: {fileID: 8300000, guid: db3634187f5b01541a4d27fb8c7e1d6c, type: 3}
 --- !u!114 &5240943066244757074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3102,6 +3116,12 @@ MonoBehaviour:
   <Height>k__BackingField: 5
   <Money>k__BackingField: 200
   clothingZoom: 1.5
+  onItemSwapped: {fileID: 8300000, guid: 67e439c460480864a83da9a93335ee48, type: 3}
+  onTransactionBuy: {fileID: 8300000, guid: 08d82c3ae25f5ca4a878ab9f9b0a3623, type: 3}
+  onTransactionSell: {fileID: 8300000, guid: 0033a5b7974d3fb4e92f540cc6690233, type: 3}
+  onTransactionDenied: {fileID: 8300000, guid: 4503cf65d77c12f43af5ad649a98dea9, type: 3}
+  onOpened: {fileID: 8300000, guid: 28a5fe28dd8cec74f89171ed072b29ff, type: 3}
+  onClosed: {fileID: 8300000, guid: 32b49ff8b652bcc4191f5a4bed646e78, type: 3}
 --- !u!1 &5240943066350298072
 GameObject:
   m_ObjectHideFlags: 0

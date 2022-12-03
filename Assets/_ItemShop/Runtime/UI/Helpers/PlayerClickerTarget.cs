@@ -14,5 +14,11 @@ namespace ItemShop
         [SerializeField]
         int slot;
 
+
+        public void PointerEntered(AudioClip clipToPlay)
+        {
+            if (Item)
+                GM.PlaySound(clipToPlay);
+        }
     }
 }

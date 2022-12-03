@@ -20,17 +20,24 @@ namespace ItemShop
 
         public event Action<bool> OnGamePaused;
 
-        void Start()
+        void OnEnable()
         {
             GM.Input.SubscribePause(this);
+        }
+        void OnDisable()
+        {
+            GM.Input.UnsubscribePause();
         }
 
         // Called by Resume Button
         public void TogglePause()
         {
+            var inv = PlayerInventory.Instance;
+            if (inv.Open)
+                inv.SwapOpen();
+            
             gamePaused = !gamePaused;
             pauseMenu.SetActive(gamePaused);
-            print($"Set game pause {gamePaused}");
             OnGamePaused?.Invoke(gamePaused);
         }
 

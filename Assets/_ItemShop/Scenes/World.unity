@@ -444,6 +444,7 @@ MonoBehaviour:
   talkDistance: 1.5
   pool: {fileID: 11400000, guid: 3ce8168add44d3a42841c62972efb44b, type: 2}
   shop: {fileID: 1126115216}
+  onTalk: {fileID: 8300000, guid: 220dcdcca57f5ba4b8194f7a34ba74e6, type: 3}
 --- !u!114 &1126115216
 MonoBehaviour:
   m_ObjectHideFlags: 0

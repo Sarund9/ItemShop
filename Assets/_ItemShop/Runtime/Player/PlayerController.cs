@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 namespace ItemShop
 {
@@ -20,11 +22,18 @@ namespace ItemShop
         [SerializeField]
         Rigidbody2D rb;
 
+
+
         public bool MovementEnabled => !PlayerInventory.Instance.Open;
 
         public void OnInteract(InputAction.CallbackContext context)
         {
-            
+            if (!context.performed || Selectable.allSelectableCount == 0)
+                return;
+
+            //var toselect = Selectable.allSelectablesArray[0];
+            //EventSystem.current.SetSelectedGameObject(toselect.gameObject);
+            //print($"SELECT: {toselect.gameObject.name}");
         }
 
         public void OnMovement(InputAction.CallbackContext context)

@@ -2,6 +2,7 @@ using AYellowpaper;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace ItemShop
 {
@@ -13,9 +14,21 @@ namespace ItemShop
         [SerializeField]
         InterfaceReference<IItemDisplay> itemDisplay;
 
+        [SerializeField]
+        Button button;
+        
         public Item Item => itemDisplay.Value.Item;
 
-        public bool Active { get; set; } = true;
+        bool _active = true;
+
+        public bool Active
+        {
+            get => _active;
+            set {
+                _active = value;
+                button.interactable = value;
+            }
+        }
 
         public void PointerEntered()
         {

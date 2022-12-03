@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.U2D;
+using UnityEngine.Experimental.Rendering.Universal;
 
 namespace ItemShop
 {
@@ -12,7 +12,7 @@ namespace ItemShop
         Camera cam;
 
         [SerializeField]
-        PixelPerfectCamera ppCamera;
+        PixelPerfectCamera pixelPerfectCamera;
 
         [SerializeField, Range(.001f, .1f)]
         float baseLerp = .01f, zoomLerp = .01f;
@@ -40,6 +40,7 @@ namespace ItemShop
             return modifiers.Remove(modifier);
         }
 
+
         private void LateUpdate()
         {
             Vector3 desiredPos = Vector3.zero;
@@ -59,11 +60,11 @@ namespace ItemShop
             }
 
             desiredPos.z = -10;
-            //transform.position = Vector3.Lerp(transform.position, desiredPos, lerp);
             transform.position = desiredPos;
-            cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, desiredZoom, zoomLerp);
 
-            //ppCamera.pixelSnapping = false;
+            var startPPU = 64;
+            var desiredPPUfactor = desiredZoom / baseZoom;
+            pixelPerfectCamera.assetsPPU = Mathf.RoundToInt(startPPU / desiredPPUfactor);
         }
 
         public class Modifier

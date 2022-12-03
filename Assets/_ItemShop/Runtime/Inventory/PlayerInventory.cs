@@ -56,6 +56,8 @@ namespace ItemShop
 
         public event Action<int> OnMoneyChanged;
 
+        CameraController.Modifier whenOpen;
+
         public int IndexOf(int x, int y) =>
             x + y * Width;
 
@@ -143,6 +145,9 @@ namespace ItemShop
                 {
                     dialoguePlayer.Close();
                 }
+
+                whenOpen = GM.CameraControl.CreateModifier();
+                whenOpen.Zoom = 2f;
             }
             else
             {
@@ -162,6 +167,8 @@ namespace ItemShop
                     shopUi.gameObject.SetActive(false);
                     CurrentShop = null;
                 }
+                whenOpen.Disable();
+                whenOpen = null;
             }
         }
 

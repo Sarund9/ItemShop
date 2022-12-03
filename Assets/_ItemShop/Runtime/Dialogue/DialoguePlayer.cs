@@ -21,7 +21,12 @@ namespace ItemShop
         [SerializeField]
         Transform optionParent;
 
+        [SerializeField]
+        float cameraOffset = 1.5f;
+
         List<TextButton> options = new();
+
+        CameraController.Modifier whenActive;
 
         public static bool Exists(out DialoguePlayer player)
         {
@@ -59,6 +64,8 @@ namespace ItemShop
 
             gameObject.SetActive(true);
             text.text = line;
+            whenActive = GM.CameraControl.CreateModifier();
+            whenActive.Offset = new Vector2(0, cameraOffset);
         }
 
         public void CreateOption(string name, UnityAction callback)
@@ -75,6 +82,8 @@ namespace ItemShop
         {
             gameObject.SetActive(false);
             DisplayActive = false;
+            whenActive.Disable();
+            whenActive = null;
         }
     }
 }

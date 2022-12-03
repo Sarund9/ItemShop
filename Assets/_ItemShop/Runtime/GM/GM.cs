@@ -19,10 +19,14 @@ namespace ItemShop
         InputManager input;
         [SerializeField]
         Camera cam;
+        [SerializeField]
+        CameraController cameraController;
 
         public static InputManager Input => I.input;
 
         public static Camera Camera => I.cam;
+
+        public static CameraController CameraControl => I.cameraController;
 
         private void Awake()
         {

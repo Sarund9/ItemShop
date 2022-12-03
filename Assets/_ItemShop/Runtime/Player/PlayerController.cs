@@ -38,9 +38,12 @@ namespace ItemShop
             Instance = this;
         }
 
-        public void Start()
+        void Start()
         {
             GM.Input.SubscribePlayer(this);
+            var mod = GM.CameraControl.CreateModifier();
+            mod.Target = transform;
+
         }
 
         public void OnOpenInventory(InputAction.CallbackContext context)

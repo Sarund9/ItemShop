@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Black Tank Top
   m_EditorClassIdentifier: 
   <ItemName>k__BackingField: Black Tank Top
+  <Price>k__BackingField: 75
   <Sprite>k__BackingField: {fileID: -1804268140, guid: 0b70def8c40f2ed4d9c6e7f3a529cef9, type: 3}
   <SpriteScale>k__BackingField: 2
   <SpriteOffset>k__BackingField: {x: 0, y: 10}

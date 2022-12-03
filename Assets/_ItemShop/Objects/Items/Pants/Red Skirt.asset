@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Red Skirt
   m_EditorClassIdentifier: 
   <ItemName>k__BackingField: Red Skirt
+  <Price>k__BackingField: 30
   <Sprite>k__BackingField: {fileID: -429702965, guid: 19c1b47d730433b429dfde1ca09ab215, type: 3}
   <SpriteScale>k__BackingField: 2
   <SpriteOffset>k__BackingField: {x: 0, y: 22}

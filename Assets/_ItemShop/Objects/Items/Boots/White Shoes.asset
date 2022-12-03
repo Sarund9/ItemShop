@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: White Shoes
   m_EditorClassIdentifier: 
   <ItemName>k__BackingField: White Shoes
+  <Price>k__BackingField: 120
   <Sprite>k__BackingField: {fileID: -1929830045, guid: ab1761b8a852cde40b5c92ea66175b55, type: 3}
   <SpriteScale>k__BackingField: 2
   <SpriteOffset>k__BackingField: {x: 0, y: 25}

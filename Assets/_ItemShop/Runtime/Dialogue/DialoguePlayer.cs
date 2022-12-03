@@ -82,7 +82,7 @@ namespace ItemShop
         {
             gameObject.SetActive(false);
             DisplayActive = false;
-            whenActive.Disable();
+            whenActive?.Disable();
             whenActive = null;
         }
     }

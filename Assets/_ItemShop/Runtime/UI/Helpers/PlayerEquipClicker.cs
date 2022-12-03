@@ -24,6 +24,9 @@ namespace ItemShop
         [SerializeField]
         float[] percents;
 
+        [SerializeField]
+        TooltipTarget[] tooltipTargets;
+
         Camera cam;
         Transform player;
 
@@ -34,7 +37,18 @@ namespace ItemShop
             cam = GM.Camera;
             player = PlayerController.Instance.transform;
 
+            var inv = PlayerInventory.Instance;
+            inv.OnOpenStateChanged += OpenStateChanged;
+
             RefreshSizes();
+        }
+
+        private void OpenStateChanged(bool open)
+        {
+            foreach (var target in tooltipTargets)
+            {
+                target.Active = open;
+            }
         }
 
         private void Update()

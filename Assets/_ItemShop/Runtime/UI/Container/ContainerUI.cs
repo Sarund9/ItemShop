@@ -64,7 +64,7 @@ namespace ItemShop
         }
         private void ItemChanged(int index)
         {
-            slots[index].SetItem(container.Value[index]);
+            slots[index].Item = container.Value[index];
         }
 
         private void Awake()

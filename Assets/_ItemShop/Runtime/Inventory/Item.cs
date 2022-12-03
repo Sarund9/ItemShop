@@ -28,6 +28,9 @@ namespace ItemShop
 
         [field: SerializeField]
         public ItemCategory Category { get; set; }
+        
+        [field: SerializeField]
+        public string Description { get; private set; }
 
         // Animations for the Character
         public SpriteAnimation UpAnim, DownAnim, LeftAnim, RightAnim;

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -17,21 +18,32 @@ namespace ItemShop
         [SerializeField]
         float offsetMult = 3;
 
+        [SerializeField]
+        TMP_Text tooltipText;
+
+        [SerializeField]
+        GameObject tooltip;
+
         Vector2 offset;
-
-
 
         private void Update()
         {
+            // Main Item
             var mousePos = Mouse.current.position.ReadValue();
 
-            image.transform.position = mousePos + (offset * offsetMult);
+            transform.position = mousePos + (offset * offsetMult);
 
-            //var wp = GM.Camera.ScreenToWorldPoint(mousePos);
+            var slot = TooltipTarget.Current;
+            tooltip.SetActive(slot && slot.Item);
 
+            if (slot && slot.Item)
+            {
+                tooltipText.text = $"{slot.Item.ItemName}\n" +
+                    $"${slot.Item.Price}\n" +
+                    slot.Item.Category.CategoryName + "\n" + 
+                    slot.Item.Description;
+            }
         }
-
-
 
         public void Set(Item inHand)
         {

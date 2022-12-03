@@ -56,6 +56,8 @@ namespace ItemShop
 
         public event Action<int> OnMoneyChanged;
 
+        public event Action<bool> OnOpenStateChanged;
+
         CameraController.Modifier whenOpen;
 
         public int IndexOf(int x, int y) =>
@@ -170,6 +172,7 @@ namespace ItemShop
                 whenOpen.Disable();
                 whenOpen = null;
             }
+            OnOpenStateChanged?.Invoke(Open);
         }
 
         private void OnValidate()

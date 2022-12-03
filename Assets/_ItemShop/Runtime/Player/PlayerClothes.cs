@@ -36,11 +36,6 @@ namespace ItemShop
         public Item this[int slot]
         {
             get => items[slot];
-            //set {
-            //    items[slot] = value;
-            //    UpdateView(slot, value);
-            //    //OnItemChanged?.Invoke(slot);
-            //}
         }
 
         public bool TrySet(int slot, Item item)
@@ -60,6 +55,7 @@ namespace ItemShop
             var old = items;
             items = new Item[Width * Height];
             Array.Copy(old, items, Mathf.Min(old.Length, items.Length));
+
         }
 
         private void Start()
@@ -73,13 +69,19 @@ namespace ItemShop
                     continue;
                 AssignAnimations(under, slot);
             }
+            
+            for (int i = 0; i < Mathf.Min(items.Length, slots.Count); i++)
+            {
+                if (items[i])
+                    AssignAnimations(items[i], slots[i]);
+            }
         }
 
         private void AssignAnimations(Item item, ItemSlot slot)
         {
             if (!slot.render)
                 return;
-            //print($"Assign Animations for '{item}' on '{slot.category}'");
+            
             if (item)
             {
                 animator.SetOverlay("up", item.UpAnim, slot.render);

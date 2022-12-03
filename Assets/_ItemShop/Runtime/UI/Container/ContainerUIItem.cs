@@ -6,9 +6,8 @@ using UnityEngine.UI;
 
 namespace ItemShop
 {
-    public class ContainerUIItem : MonoBehaviour
+    public class ContainerUIItem : MonoBehaviour, IItemDisplay
     {
-
         [SerializeField]
         Item item;
 
@@ -58,7 +57,7 @@ namespace ItemShop
             this.index = index;
         }
 
-        public void SetItem(Item item)
+        private void SetItem(Item item)
         {
             if (item)
             {
@@ -66,14 +65,6 @@ namespace ItemShop
                 itemDisplay.color = item.Color;
                 toOffset.localPosition = item.SpriteOffset;
                 toScale.localScale = item.SpriteScale * Vector3.one;
-                //itemDisplay.rectTransform.localPosition = item.SpriteOffset; // + (32 * item.SpriteScale * - Vector2.one);
-
-                //itemDisplay.rectTransform.localScale = item.SpriteScale * Vector3.one;
-                //itemDisplay.rectTransform.pivot = Vector2.one / 2;
-                //itemDisplay.rectTransform.localScale = item.SpriteScale * Vector3.one;
-
-                //itemDisplay.rectTransform.pivot = Vector2.zero;
-                //itemDisplay.rectTransform.localPosition = item.SpriteOffset;
             }
             else
             {
@@ -81,13 +72,9 @@ namespace ItemShop
                 itemDisplay.color = Color.white * 0;
                 toOffset.localPosition = Vector3.zero;
                 toScale.localScale = Vector3.one;
-                //itemDisplay.rectTransform.localPosition = Vector3.zero;
-
-                //itemDisplay.rectTransform.pivot = Vector2.zero;
-                //itemDisplay.rectTransform.pivot = Vector2.one / 2;
-                //itemDisplay.rectTransform.localScale = Vector3.one;
             }
             
         }
+
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D;
 
 namespace ItemShop
 {
@@ -10,8 +11,14 @@ namespace ItemShop
         [SerializeField]
         Camera cam;
 
+        [SerializeField]
+        PixelPerfectCamera ppCamera;
+
         [SerializeField, Range(.001f, .1f)]
         float baseLerp = .01f, zoomLerp = .01f;
+
+        [SerializeField]
+        float baseZoom = 3f;
 
         /*
         Follow Player
@@ -36,7 +43,7 @@ namespace ItemShop
         private void LateUpdate()
         {
             Vector3 desiredPos = Vector3.zero;
-            float desiredZoom = 4;
+            float desiredZoom = baseZoom;
             float lerp = baseLerp;
             foreach (var mod in modifiers)
             {
@@ -52,8 +59,11 @@ namespace ItemShop
             }
 
             desiredPos.z = -10;
-            transform.position = Vector3.Lerp(transform.position, desiredPos, lerp);
+            //transform.position = Vector3.Lerp(transform.position, desiredPos, lerp);
+            transform.position = desiredPos;
             cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, desiredZoom, zoomLerp);
+
+            //ppCamera.pixelSnapping = false;
         }
 
         public class Modifier

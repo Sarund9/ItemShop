@@ -39,6 +39,7 @@ namespace ItemShop
 
             var inv = PlayerInventory.Instance;
             inv.OnOpenStateChanged += OpenStateChanged;
+            OpenStateChanged(false);
 
             RefreshSizes();
         }

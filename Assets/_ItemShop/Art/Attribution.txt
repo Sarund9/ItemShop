@@ -18,3 +18,5 @@ https://sanderfrenken.github.io/Universal-LPC-Spritesheet-Character-Generator
 Golden UI - Bigger
 https://opengameart.org/content/golden-ui-bigger-than-ever-edition
 
+LPC House Insides
+https://opengameart.org/content/lpc-house-insides

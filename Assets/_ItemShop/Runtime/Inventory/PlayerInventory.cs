@@ -52,6 +52,9 @@ namespace ItemShop
         [field: SerializeField]
         public int Money { get; private set; }
 
+        [SerializeField, Min(.5f)]
+        float clothingZoom = 2f;
+
         public event Action<int> OnItemChanged;
 
         public event Action<int> OnMoneyChanged;
@@ -149,7 +152,7 @@ namespace ItemShop
                 }
 
                 whenOpen = GM.CameraControl.CreateModifier();
-                whenOpen.Zoom = 2f;
+                whenOpen.Zoom = clothingZoom;
             }
             else
             {

@@ -198,6 +198,7 @@ namespace ItemShop
                 {
                     shopUi.TargetContainer = null;
                     shopUi.gameObject.SetActive(false);
+                    CurrentShop.Closed();
                     CurrentShop = null;
                 }
                 whenOpen.Disable();

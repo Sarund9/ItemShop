@@ -59,5 +59,13 @@ namespace ItemShop
             }
         }
 
+        public void Closed()
+        {
+            // Remove sold items
+            for (int i = selection.Count; i < inventory.Length; i++)
+            {
+                inventory[i] = null;
+            }
+        }
     }
 }
